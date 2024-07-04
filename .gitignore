@@ -10,6 +10,7 @@ py/*.py
 !cpp/_template.cpp
 !py/_template.py
 a.out
+a.exe
 
 # 入出力ファイル
 in/*
