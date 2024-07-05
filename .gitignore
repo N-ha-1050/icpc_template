@@ -17,3 +17,5 @@ in/*
 out/*
 !in/_.txt
 !out/_.txt
+
+_*/
