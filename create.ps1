@@ -1,12 +1,10 @@
-# .\create.ps1 $lang $problem
+# .\create.ps1 $problem
 #
 # ex:
-#   .\create.ps1 py A
-#   .\create.ps1 cpp B
+#   .\create.ps1 A
 
 Param(
-    [parameter(Mandatory=$true)][string]$lang,
-    [parameter(Mandatory=$true)][array]$problem
+    [parameter(Mandatory=$true)][string]$problem
 )
 
-Copy-Item ./$lang/_template.$lang ./$lang/$problem.$lang
+Copy-Item ./problems/_template ./problems/$problem -Recurse

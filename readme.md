@@ -5,90 +5,77 @@ author: N_ha
 
 ## 環境構築
 
-1. Python の仮想環境を構築
+1. 実行環境のインストール
 
-   ```shell
-   cd icpc_template
-   python3 -m venv .venv
-   . .venv/bin/activate
-   python -V
-   ```
+   ICPC 2025 Yokohama 国内予選 の環境
 
-   Windows で Python ランチャーの場合(Powershellを使用)
+   > - Python 3 (PyPy)
+   >   - Python 3.9.18 (PyPy 7.3.15 with GCC 10.2.1 20210130 (Red Hat 10.2.1-11))
+   >
+   > <https://storage.googleapis.com/files.icpc.jp/domestic2025/judging-notes-ja.pdf> より抜粋
 
-   ```powershell
-   cd icpc_template
-   py -3 -m venv .venv
-   .\.venv\Scripts\Activate.ps1
-   python -V
-   ```
+   上記の環境に合わせて <https://downloads.python.org/pypy/> から `PyPy 7.3.15 > Python 3.9` をダウンロードして、インストールする。
 
-2. Python のライブラリをインストール
+   - Windows の場合
 
-    基本は AtCoder に入っているもの
-    (cppyy はインストールせず、torch はバージョン指定せずにインストール)
+     1. 解凍する
 
-   ```shell
-   python -m pip install --upgrade pip
-   python -m pip install -r requirements.txt
-   ```
+        1. `C:\Users\nagano\AppData\Local\Programs\Python` が存在しなければ作成する
+           - `AppData` フォルダは隠しフォルダなので、表示されていない場合は表示する必要があります
+        2. `pypy3.9-v7.3.15-win64.zip` 内の `pypy3.9-v7.3.15-win64` フォルダを `C:\Users\nagano\AppData\Local\Programs\Python` に移動(解凍)する
+           - `C:\Users\nagano\AppData\Local\Programs\Python\pypy3.9-v7.3.15-win64\pypy3.exe` が存在すれば OK
 
-3. C++ のAtCoder Library のインストール
+     2. 環境変数の設定
+        1. 設定を開き、設定の検索から `環境変数を編集` を選択
+        2. `ユーザー環境変数` の `Path` を選択し、`編集` をクリック
+        3. `新規` をクリックして、以下のパスを追加
+           - `C:\Users\nagano\AppData\Local\Programs\Python\pypy3.9-v7.3.15-win64`
+        4. `OK` をクリックして、設定を保存
+     3. PowerShell を新しく開き、 `pypy3 -V` を実行して、バージョンが表示されれば OK
+     4. pip のインストール
+        1. `pypy3 -m ensurepip` を実行
+        2. `pypy3 -m pip install --upgrade pip` を実行して、pip を最新に更新
 
-   [このページ](https://atcoder.jp/posts/517)からZipファイルをダウンロードして、 `icpc_template/ac-library/` 以下に解凍
+2. 仮想環境の構築
+
+   - Windows の場合
+
+     ```powershell
+     pypy3 -m venv .venv
+     .venv\Scripts\Activate.ps1
+     pypy3 -m pip install -r .\requirements.txt
+     ```
 
 ## 問題を解く
 
 1. プログラムファイルの作成
 
-   テンプレートを問題IDにしてコピーします
+   テンプレートを問題 ID にしてコピーします
 
    ```shell
-   . create.sh {言語} {問題}
-   . create.sh py A
-   . create.sh cpp B
+   . create.sh {問題}
+   . create.sh A
    ```
 
    Windows (PowerShell) の場合
 
    ```powershell
-   .\create.ps1 {言語} {問題}
-   .\create.ps1 py A
-   .\create.ps1 cpp B
+   .\create.ps1 {問題}
+   .\create.ps1 A
    ```
 
 2. 実行
 
-   1. Python
+   ```shell
+   . run.sh {問題} {入力ファイル(デフォルト: in.txt)} {出力ファイル(デフォルト: out.txt)}
+   . run.sh A
+   . run.sh A in.txt out.txt
+   ```
 
-      ```shell
-      . py.sh {問題} {問題ケース(デフォルト: _.txt)}
-      . py.sh A
-      . py.sh A A1
+   Windows (PowerShell) の場合
 
-      ```
-
-      Windows (PowerShell) の場合
-
-      ```powershell
-      .\py.ps1 {問題} {問題ケース(デフォルト: _.txt)}
-      .\py.ps1 A
-      .\py.ps1 A A1
-      ```
-
-   2. C++
-
-      ```shell
-      . cpp.sh {問題} {問題ケース(デフォルト: _.txt)}
-      . cpp.sh A
-      . cpp.sh A A1
-
-      ```
-
-      Windows (PowerShell) の場合
-
-      ```powershell
-      .\cpp.ps1 {問題} {問題ケース(デフォルト: _.txt)}
-      .\cpp.ps1 A
-      .\cpp.ps1 A A1
-      ```
+   ```powershell
+   .\run.ps1 {問題} {入力ファイル(デフォルト: in.txt)} {出力ファイル(デフォルト: out.txt)}
+   .\run.ps1 A
+   .\run.ps1 A in.txt out.txt
+   ```

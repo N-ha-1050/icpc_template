@@ -1,12 +1,10 @@
 #!/bin/bash
 
-# . create.sh ${lang} ${problem}
+# . create.sh ${problem}
 #
 # ex:
-#   . create.sh py A
-#   . create.sh cpp B
+#   . create.sh A
 
-lang=${1}
-problem=${2}
+problem=${1}
 
-cp ./${lang}/_template.${lang} ./${lang}/${problem}.${lang}
+cp -r ./problems/_template ./problems/${problem}
