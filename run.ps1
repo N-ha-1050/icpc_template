@@ -10,4 +10,4 @@ Param(
     [string]$outfile="out.txt"
 )
 
-Get-Content ./problems/$problem/$infile | pypy3 ./problems/$problem/main.py > ./problems/$problem/$outfile
+Get-Content ./problems/$problem/$infile | pypy3 ./problems/$problem/main_$problem.py > ./problems/$problem/$outfile

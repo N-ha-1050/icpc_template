@@ -8,3 +8,4 @@ Param(
 )
 
 Copy-Item ./problems/_template ./problems/$problem -Recurse
+Rename-Item -Path ./problems/$problem/main.py -NewName main_$problem.py

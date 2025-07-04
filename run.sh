@@ -10,4 +10,4 @@ problem=${1}
 infile=${2:-in.txt}
 outfile=${3:-out.txt}
 
-pypy3 ./problems/${problem}/main.py < ./problems/${problem}/${infile} > ./problems/${problem}/${outfile}
+pypy3 ./problems/${problem}/main_${problem}.py < ./problems/${problem}/${infile} > ./problems/${problem}/${outfile}
