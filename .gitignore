@@ -4,3 +4,6 @@
 # 問題ディレクトリ
 problems/*
 !problems/_template/
+
+# 非共有ディレクトリ
+_*/*
